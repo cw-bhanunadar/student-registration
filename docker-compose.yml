@@ -23,6 +23,7 @@ services:
       - api-server
     networks:
       - student-network
+    stdin_open: true
 
   mysql:
     image: mysql
