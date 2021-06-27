@@ -3,6 +3,8 @@
 
 ## prerequisite
 Docker-compose, node-14
+https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=94798094
+https://computingforgeeks.com/install-node-js-14-on-ubuntu-debian-linux-mint/
 
 ## Steps to run the project:
 
