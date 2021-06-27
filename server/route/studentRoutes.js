@@ -4,8 +4,7 @@ const studentOperations = require("../services/studentOperation");
 
 router.post("/", async function (req, res, next) {
   try {
-    //await studentOperations.create(req.body)
-    res.json([{ id: 1 }, { id: 2 }]);
+    res.json(await studentOperations.create(req.body));
   } catch (err) {
     console.error(`Error while creating student`, err.message);
     next(err);

@@ -8,7 +8,6 @@ services:
       - "5000:5000"
     volumes:
       - ./server/:/usr/src/app
-      - /usr/src/app/node_modules
     networks:
       - student-network
     depends_on:
@@ -20,7 +19,6 @@ services:
       - "80:3000"
     volumes:
       - ./client/:/usr/src/app
-      - /usr/src/app/node_modules
     depends_on:
       - api-server
     networks:
@@ -30,8 +28,10 @@ services:
     image: mysql
     env_file: .env
     environment:
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
-      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_ROOT_PASSWORD: "cogoport"
+      MYSQL_DATABASE: "cogoport"
+      MYSQL_USER: 'cogoport'
+      MYSQL_PASSWORD: 'pass'
     volumes:
       - ./db:/var/lib/mysql
     ports:

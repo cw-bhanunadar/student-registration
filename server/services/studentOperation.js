@@ -1,15 +1,11 @@
 const db = require("./db");
 async function create(student) {
   const rows = await db.query(
-    `Insert into students (name, contact_number, department) values (?, ?, ?)`,
+    `Insert into students (name, contact_number, department, isDeleted) values (?, ?, ?, 0)`,
     [student.name, student.contact, student.department]
   );
-  let message = "Error in inserting student details";
 
-  if (result.affectedRows) {
-    message = "Student detail inserted successfully";
-  }
-
+  message = "Student detail inserted successfully";
   return { message };
 }
 async function getAll() {

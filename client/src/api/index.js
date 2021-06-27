@@ -1,13 +1,11 @@
-const api = require("axios");
-var url = "http://api-server:5000/api/students";
+const axios = require("axios");
+var url = "http://localhost:5000/api/student";
 
 function getAll() {
-  axios(url).then(function (response) {
-    console.log(response);
-  });
+  return axios(url);
 }
 
-function getStudent(id) {
+function getStudentById(id) {
   axios(url + "/" + id).then(function (response) {
     console.log(response);
   });
@@ -40,7 +38,7 @@ function updateStudent(student) {
 }
 module.exports = {
   getAll,
-  getStudent,
+  getStudentById,
   deleteStudent,
   createStudent,
   updateStudent,

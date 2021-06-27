@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const studentRouter = require("./route/studentRoutes");
+const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,7 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/student", studentRouter);
-
+app.use(cors);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
