@@ -1,0 +1,44 @@
+version: "3"
+services:
+  api-server:
+    build: ./server
+    env_file:
+      - ./server/.env
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server/:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - student-network
+    depends_on:
+      - mysql
+
+  ui:
+    build: ./client
+    ports:
+      - "80:3000"
+    volumes:
+      - ./client/:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - api-server
+    networks:
+      - student-network
+
+  mysql:
+    image: mysql
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+    volumes:
+      - ./db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - student-network
+
+networks:
+  student-network:
+    driver: bridge
