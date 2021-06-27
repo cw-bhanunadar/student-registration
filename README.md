@@ -1,5 +1,6 @@
 # student-registration
 
+## Hosted at http://34.133.153.98/
 
 ## prerequisite
 Docker-compose, node-14
