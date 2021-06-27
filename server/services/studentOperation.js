@@ -1,8 +1,9 @@
 const db = require("./db");
 async function create(student) {
+  console.log();
   const rows = await db.query(
-    `Insert into students (name, contact_number, department, isDeleted) values (?, ?, ?, 0)`,
-    [student.name, student.contact, student.department]
+    `Insert into students (name, department, isDeleted) values (?, ?, 0)`,
+    [student.name, student.department]
   );
 
   message = "Student detail inserted successfully";
@@ -24,8 +25,8 @@ async function get(id) {
 }
 async function update(id, student) {
   const rows = await db.query(
-    `Update table students set name = ? , contact_number = ?, department = ? where id = ?`,
-    [student.name, student.contact, student.department, id]
+    `Update students set name = ? , department = ? where id = ?`,
+    [student.name, student.department, id]
   );
   return rows;
 }

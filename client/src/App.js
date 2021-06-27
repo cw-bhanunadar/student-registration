@@ -1,24 +1,21 @@
-import logo from "./logo.svg";
 import "./App.css";
-import API from "./api";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import StudentInsert from "./components/StudentInsert";
+import StudentUpdate from "./components/StudentUpdate";
+import StudentList from "./components/StudentList";
+import NavBar from "./components/NavBar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p onClick={() => API.getAll()}>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact component={StudentList} />
+        <Route path="/student/create" exact component={StudentInsert} />
+        <Route path="/student/update/:id" exact component={StudentUpdate} />
+      </Switch>
+    </Router>
   );
 }
 

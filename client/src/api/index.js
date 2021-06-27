@@ -2,38 +2,30 @@ const axios = require("axios");
 var url = "http://localhost:5000/api/student";
 
 function getAll() {
-  return axios(url);
+  return axios.get(url);
 }
 
 function getStudentById(id) {
-  axios(url + "/" + id).then(function (response) {
-    console.log(response);
-  });
+  return axios.get(url + "/" + id);
 }
 function deleteStudent(id) {
-  axios({
+  return axios({
     method: "delete",
     url: url + "/" + id,
-  }).then(function (response) {
-    console.log(response);
   });
 }
 function createStudent(student) {
-  axios({
+  return axios({
     method: "post",
     url: url,
     data: student,
-  }).then(function (response) {
-    console.log(response);
   });
 }
 function updateStudent(student) {
-  axios({
+  return axios({
     method: "put",
     url: url + "/" + student.id,
     data: student,
-  }).then(function (response) {
-    console.log(response);
   });
 }
 module.exports = {
