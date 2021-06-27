@@ -22,4 +22,5 @@ Docker-compose, node-14
 2. Move passwords to .env files
 3. Validations on input fields
 4. Secure APIs
+5. Proper Error Handlings
 
