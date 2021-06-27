@@ -30,10 +30,9 @@ async function update(id, student) {
   return rows;
 }
 async function markDelete(id) {
-  const rows = await db.query(
-    `Update table students set isDeleted=1 where id = ?`,
-    [id]
-  );
+  const rows = await db.query(`Update students set isDeleted=1 where id = ?`, [
+    id,
+  ]);
   return rows;
 }
 module.exports = {
